@@ -1,0 +1,90 @@
+<div class="container">
+
+    <div [hidden]="createSubmitted">
+        <h1>Create new employee</h1>
+        <form (ngSubmit)="onSubmitCreate()" #createForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"
+                    required
+                    [(ngModel)]="createModel.name" name="name" #name="ngModel">
+                <div [hidden]="name.valid || name.pristine"
+                    class="alert alert-danger">
+                Name is required
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="text" class="form-control" id="email"
+                    required
+                    [(ngModel)]="createModel.email" name="email" #email="ngModel">
+                <div [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger">
+                Email is required
+            </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid">Submit</button>
+        </form>
+    </div>
+
+    <div [hidden]="!createSubmitted">
+        <h2>You created the following employee:</h2>
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-9">{{ createModel.name }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Email</div>
+          <div class="col-xs-9">{{ createModel.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Id</div>
+          <div class="col-xs-9">{{ createModel.id }}</div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="createSubmitted=false">Edit</button>
+    </div>
+</div>
+
+<div class="container">
+    <div [hidden]="getSubmitted || nonExisting">
+        <h1>Show existing employee data</h1>
+        <form (ngSubmit)="onSubmitGet()" #getForm="ngForm">
+            <div class="form-group">
+                <label for="employeeId">Employee id</label>
+                <input type="text" class="form-control" id="employeeId"
+                    required
+                    [(ngModel)]="employeeId" name="employeeId" #id="ngModel">
+                <div [hidden]="id.valid || id.pristine"
+                    class="alert alert-danger">
+                Id is required
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!getForm.form.valid">Submit</button>
+        </form>
+    </div>
+
+    <div [hidden]="!getSubmitted">
+        <h2>You requested the following employee:</h2>
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-9">{{ getModel.name }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Email</div>
+          <div class="col-xs-9">{{ getModel.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Id</div>
+          <div class="col-xs-9">{{ getModel.id }}</div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="getSubmitted=false">Edit</button>
+    </div>
+
+    <div [hidden]="!nonExisting">
+        <h2>The requested employee with id: {{ employeeId }} does not exist.</h2>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="nonExisting=false">Edit</button>
+    </div>
+</div>
