@@ -6,6 +6,7 @@ import com.frontendart.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,13 @@ public class EmployeeService {
 
     public Optional<Employee> findById(Long id) {
         return employeeRepository.findById(id);
+    }
+
+    /** step 1
+     *
+     * @return it returns all employee data from the database
+     */
+    public List<Employee> findAllEmployees() {
+        return employeeRepository.findAll();
     }
 }
