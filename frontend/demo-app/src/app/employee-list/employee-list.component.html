@@ -1,1 +1,31 @@
-<p>employee-list works!</p>
+<div class="employee-list">
+  <h2>Employee List</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="employees.length > 0; else noData">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Position</th>
+      <!-- Add other relevant fields -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.position }}</td>
+      <!-- Add other relevant fields -->
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p>No employees found.</p>
+  </ng-template>
+</div>
+
