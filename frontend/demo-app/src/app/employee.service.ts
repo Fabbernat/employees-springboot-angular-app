@@ -34,5 +34,12 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(this.baseUrl);
   }
 
+  /**
+   * this maps to /all
+   */
+  getAllEmployees(): Observable<Employee[]> {
+    return this.httpClient.get<Employee[]>(`${this.baseUrl}/all`);
+  }
+
 
 }

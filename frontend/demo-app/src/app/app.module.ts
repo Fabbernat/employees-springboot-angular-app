@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EmployeeTableComponent } from './components/employee-table/employee-tab
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

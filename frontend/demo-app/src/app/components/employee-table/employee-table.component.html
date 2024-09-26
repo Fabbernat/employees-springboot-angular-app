@@ -1,6 +1,7 @@
 <p>employee-table works!</p>
-<div class="employee-table-container">
-  <table>
+<div class="table-responsive employee-table-container">
+  <!-- Employee Table -->
+  <table [dataSource]="employees" class="table table-striped table-bordered" mat-table>
     <thead>
     <tr>
       <th>ID</th>
@@ -11,11 +12,37 @@
     </thead>
     <tbody>
     <tr *ngFor="let employee of employees">
-      <td>{{ employee.id }}</td>
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.email }}</td>
-      <td>{{ employee.position }}</td>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell> ID</th>
+        <td *matCellDef="let employee" mat-cell> {{ employee.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let employee" mat-cell> {{ employee.name }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="position">
+        <th *matHeaderCellDef mat-header-cell> Email</th>
+        <td *matCellDef="let employee" mat-cell> {{ employee.email }}</td>
+      </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th *matHeaderCellDef mat-header-cell> Position</th>
+        <td *matCellDef="let employee" mat-cell> {{ employee.position }}</td>
+      </ng-container>
     </tr>
+
+    <!-- Header and Row Definitions -->
+    <tr *matHeaderRowDef="['id', 'name', 'position']" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: ['id', 'name', 'position']" mat-row></tr>
+
     </tbody>
   </table>
+
+
 </div>
