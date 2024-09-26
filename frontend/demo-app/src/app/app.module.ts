@@ -8,19 +8,23 @@ import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     ErrorComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
