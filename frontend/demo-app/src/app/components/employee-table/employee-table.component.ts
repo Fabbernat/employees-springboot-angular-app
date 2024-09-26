@@ -5,7 +5,7 @@ import {Employee} from '../../model/employee';
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrls: ['./employee-table.component.css']
+  styleUrls: ['./employee-table.component.scss']
 })
 export class EmployeeTableComponent implements OnInit {
   employees: Employee[] = [];
