@@ -28,8 +28,8 @@ public class EmployeeService {
     }
 
     /** step 1
-     *
-     * @return it returns all employee data from the database
+     * Finds/Gets all employees as a list
+     * @return all employee data from the database
      */
     public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();

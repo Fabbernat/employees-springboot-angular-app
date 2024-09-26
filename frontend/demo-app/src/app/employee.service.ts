@@ -7,6 +7,7 @@ import {Employee} from './model/employee';
 export interface Employee {
   id: number;
   name: string;
+  email: string;
   position: string;
   // Add other relevant fields
 }

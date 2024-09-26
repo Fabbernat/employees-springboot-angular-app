@@ -10,16 +10,16 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Position</th>
-      <!-- Add other relevant fields -->
+      <th>Email</th>
+      <th> Position </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let employee of employees">
       <td>{{ employee.id }}</td>
       <td>{{ employee.name }}</td>
+      <td>{{ employee.email }}</td>
       <td>{{ employee.position }}</td>
-      <!-- Add other relevant fields -->
     </tr>
     </tbody>
   </table>
