@@ -1,1 +1,5 @@
-<p>error works!</p>
+<div  *ngIf="status === 400" class="container">
+  <h1 class="error-message">Error {{status}}</h1>
+  <p>Oops! Something went wrong...</p>
+  <p>We are currently experiencing some technical difficulties. </p>
+</div>

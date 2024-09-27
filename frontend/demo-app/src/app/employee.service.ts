@@ -1,16 +1,8 @@
-import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-// @ts-ignore
 import {Employee} from './model/employee';
 
-export interface Employee {
-  id: number;
-  name: string;
-  email: string;
-  position: string;
-  // Add other relevant fields
-}
 
 @Injectable({
   providedIn: 'root'

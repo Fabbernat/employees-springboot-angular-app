@@ -11,11 +11,11 @@ export class EmployeeComponent {
 
   constructor(private employeeService: EmployeeService) { }
 
-  createModel = new Employee(1, 'John Doe', 'johndoe@gmail.com');
+  createModel = new Employee( 'John Doe', 'johndoe@gmail.com');
   createSubmitted = false;
 
   employeeId = 1;
-  getModel = new Employee(2,'Jane Doe', 'janedoe@gmail.com');
+  getModel = new Employee('Jane Doe', 'janedoe@gmail.com');
   getSubmitted = false;
   nonExisting = false;
 

@@ -31,7 +31,7 @@ public class EmployeeService {
      * Finds/Gets all employees as a list
      * @return all employee data from the database
      */
-    public List<Employee> findAllEmployees() {
+    public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 }

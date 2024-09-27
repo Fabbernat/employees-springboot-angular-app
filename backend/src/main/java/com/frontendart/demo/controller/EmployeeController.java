@@ -3,7 +3,6 @@ package com.frontendart.demo.controller;
 import com.frontendart.demo.dto.EmployeeDto;
 import com.frontendart.demo.entity.Employee;
 import com.frontendart.demo.service.EmployeeService;
-import jakarta.servlet.annotation.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,7 @@ public class EmployeeController {
 //    @WebServlet(urlPatterns = {"/all", "/employee/all"})
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees() {
-        List<Employee> employees = employeeService.findAllEmployees();
+        List<Employee> employees = employeeService.getAllEmployees();
         if (employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

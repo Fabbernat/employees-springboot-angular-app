@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo-app';
+  status: number = 200;
+
+  handleError(statusCode: number) {
+    this.status = statusCode;
+  }
 }

@@ -1,48 +1,91 @@
-<p>employee-table works!</p>
-<div class="table-responsive employee-table-container">
-  <!-- Employee Table -->
-  <table [dataSource]="employees" class="table table-striped table-bordered" mat-table>
+<style>
+  .table {
+    display: table;
+  }
+  .row {
+    display: table-row;
+  }
+  .cell {
+    display: table-cell;
+  }
+</style>
+<div class="employee-list">
+  <h1>Employee List</h1>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="employees.length > 0; else noData">
     <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Position</th>
+      <th> Position </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let employee of employees">
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th *matHeaderCellDef mat-header-cell> ID</th>
-        <td *matCellDef="let employee" mat-cell> {{ employee.id }}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th *matHeaderCellDef mat-header-cell> Name</th>
-        <td *matCellDef="let employee" mat-cell> {{ employee.name }}</td>
-      </ng-container>
-
-      <!-- Email Column -->
-      <ng-container matColumnDef="position">
-        <th *matHeaderCellDef mat-header-cell> Email</th>
-        <td *matCellDef="let employee" mat-cell> {{ employee.email }}</td>
-      </ng-container>
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th *matHeaderCellDef mat-header-cell> Position</th>
-        <td *matCellDef="let employee" mat-cell> {{ employee.position }}</td>
-      </ng-container>
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.position }}</td>
     </tr>
-
-    <!-- Header and Row Definitions -->
-    <tr *matHeaderRowDef="['id', 'name', 'position']" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: ['id', 'name', 'position']" mat-row></tr>
-
     </tbody>
   </table>
+</div>
 
 
+<div class="table-responsive employee-table-container">
+  <h2 class="title">Employees, Table Format:</h2>
+  <!-- Employee Table -->
+  <table mat-table [dataSource]="emptyRow" class="table table-striped table-bordered employee-table">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.id }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.name }} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.email }} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let employee"> {{ employee.position }} </td>
+    </ng-container>
+
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- Data Row -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Empty Row -->
+    <tr mat-row>
+      <td mat-cell></td>
+      <td mat-cell></td>
+      <td mat-cell></td>
+      <td mat-cell></td>
+    </tr>
+  </table>
+
+  <!-- Empty State -->
+  <ng-template #noData>
+    <p>No employees found.</p>
+  </ng-template>
+  <div *ngIf="employees.length === 0" class="text-center">
+    There are currently 0 employees in the database.
+  </div>
 </div>

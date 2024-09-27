@@ -1,31 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService, Employee } from '../employee.service';
+import {Component, OnInit} from '@angular/core';
+import {Employee} from "../model/employee";
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeeListComponent {
-  employees: Employee[] = [];
-  errorMessage: string = '';
+export class EmployeeListComponent implements OnInit{
+  employees: Employee[] = [];  // may be replaced with any[]
 
-  constructor(private employeeService: EmployeeService) {}
+
+  constructor() {
+    this.employees = [];
+  }
 
   ngOnInit(): void {
-    this.loadEmployees();
+    this.employees = [
+      {
+        "name": "Chuck Norris",
+        "email": "cnorris@company.com"
+      },
+      {
+        "name": "Jackie Chan",
+        "email": "jchan@company.com"
+      },
+      {
+        "name": "Rocky Balboa",
+        "email": "rbalboa@company.com"
+      }
+    ]
   }
 
-  loadEmployees(): void {
-    this.employeeService.getEmployees().subscribe({
-      next: (data) => {
-        // this.employees = data;
-        this.errorMessage = '';  // Clear any previous error message
-      },
-      error: (err) => {
-        this.errorMessage = 'Could not load employee data. Please try again later.';
-        console.error(err);
-      }
-    });
-  }
+  protected readonly Employee = Employee;
+  employee: string | undefined;
 }
